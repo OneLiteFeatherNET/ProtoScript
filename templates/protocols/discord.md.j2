@@ -1,0 +1,17 @@
+# Protocol - Guild ID: {{ meta.guild_id }}
+
+**Period:** <t:{{ meta.start_time.timestamp()|int }}:F> to <t:{{ meta.end_time.timestamp()|int }}:F>
+
+## Participants
+{% for user in meta.users.values() -%}
+- <@{{ user.id }}> (Channel: {{ user.channel }})
+{% endfor %}
+
+## History
+{% for item in timeline -%}
+{% if item.type == 'event' -%}
+- <t:{{ item.timestamp.timestamp()|int }}:T> *{{ item.content }}*
+{% else -%}
+> **<@{{ item.user_id }}>** <t:{{ item.timestamp.timestamp()|int }}:T>: {{ item.text }}
+{% endif %}
+{% endfor %}
