@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: protoscript-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: protoscript-api
+  template:
+    metadata:
+      labels:
+        app: protoscript-api
+    spec:
+      containers:
+      - name: api
+        image: protoscript:latest
+        command: ["gunicorn", "--bind", "0.0.0.0:8008", "ProtoScript.wsgi:application"]
+        ports:
+        - containerPort: 8008
+        envFrom:
+        - configMapRef:
+            name: protoscript-config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: protoscript-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: protoscript-worker
+  template:
+    metadata:
+      labels:
+        app: protoscript-worker
+    spec:
+      containers:
+      - name: worker
+        image: protoscript:latest
+        # For Celery (RabbitMQ/Redis/ActiveMQ):
+        command: ["celery", "-A", "ProtoScript", "worker", "--loglevel=info", "--concurrency=1"]
+        envFrom:
+        - configMapRef:
+            name: protoscript-config
