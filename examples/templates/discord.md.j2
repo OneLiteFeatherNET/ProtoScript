@@ -1,0 +1,17 @@
+# Protokoll - Guild ID: {{ meta.guild_id }}
+
+**Zeitraum:** <t:{{ meta.start_time.timestamp()|int }}:F> bis <t:{{ meta.end_time.timestamp()|int }}:F>
+
+## Teilnehmer
+{% for user in meta.users.values() -%}
+- <@{{ user.id }}> (Kanal: {{ user.channel }})
+{% endfor %}
+
+## Verlauf
+{% for item in timeline -%}
+{% if item.type == 'event' -%}
+- <t:{{ item.timestamp.timestamp()|int }}:T> *{{ item.content }}*
+{% else -%}
+> **<@{{ item.user_id }}>** <t:{{ item.timestamp.timestamp()|int }}:T>: {{ item.text }}
+{% endif %}
+{% endfor %}

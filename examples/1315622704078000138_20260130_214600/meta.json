@@ -1,0 +1,49 @@
+{
+  "guild_id": 1315622704078000138,
+  "start_time": "2026-01-30T21:46:00.477569",
+  "end_time": "2026-01-30T21:46:40.652139",
+  "users": {
+    "103595873841188864": {
+      "name": "GiantTree",
+      "channel": 0
+    },
+    "245056131989241857": {
+      "name": "TheMeinerLP",
+      "channel": 1
+    }
+  },
+  "channels": {
+    "0": "GiantTree (103595873841188864)",
+    "1": "TheMeinerLP (245056131989241857)"
+  },
+  "events": [
+    {
+      "timestamp": "2026-01-30T21:46:00.477756",
+      "message": "Session started"
+    },
+    {
+      "timestamp": "2026-01-30T21:46:00.477876",
+      "message": "Recording started in channel: YOLO2"
+    },
+    {
+      "timestamp": "2026-01-30T21:46:00.544032",
+      "message": "User registered: GiantTree",
+      "user_name": "GiantTree",
+      "channel": 0
+    },
+    {
+      "timestamp": "2026-01-30T21:46:04.404061",
+      "message": "User registered: TheMeinerLP",
+      "user_name": "TheMeinerLP",
+      "channel": 1
+    },
+    {
+      "timestamp": "2026-01-30T21:46:40.651802",
+      "message": "Protokollant left the voice channel"
+    },
+    {
+      "timestamp": "2026-01-30T21:46:40.652144",
+      "message": "Session ended"
+    }
+  ]
+}
