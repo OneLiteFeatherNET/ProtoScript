@@ -1,0 +1,19 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  s3:
+    image: adobe/s3mock
+    ports:
+      - "9091:9090"
+      - "9191:9191"
+    environment:
+      - initialBuckets=protoscript-protocols
+      - http.port=9090
+      - secure.port=9191

@@ -2,7 +2,41 @@
 name = "protoscript"
 version = "0.1.0"
 description = "A Django REST service that converts speech to structured protocols using Hugging Face speech-to-text models, Jinja2 templates, and metadata-driven rendering."
+authors = [
+    { name = "OneLiteFeatherNET", email = "info@onelitefeather.net" }
+]
+license = { text = "MIT" }
 requires-python = ">=3.13"
 dependencies = [
     "django>=6.0.1",
+    "transformers",
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "triton; sys_platform == 'linux'",
+    "triton-rocm; sys_platform == 'linux'",
+    "jinja2",
+    "soundfile",
+    "python-dotenv>=1.2.1",
+    "gunicorn>=24.1.1",
+    "djangorestframework>=3.16.1",
+    "drf-spectacular>=0.29.0",
+    "boto3>=1.42.39",
+    "celery>=5.6.2",
+    "redis>=7.1.0",
+    "stomp-py>=8.2.0",
+    "djangorestframework-stubs>=3.16.7",
 ]
+
+
+[[tool.uv.index]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm7.1"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-rocm", marker = "sys_platform == 'linux'" }
+torchvision = { index = "pytorch-rocm", marker = "sys_platform == 'linux'" }
+torchaudio = { index = "pytorch-rocm", marker = "sys_platform == 'linux'" }
+triton = { index = "pytorch-rocm", marker = "sys_platform == 'linux'" }
+triton-rocm = { index = "pytorch-rocm", marker = "sys_platform == 'linux'" }
