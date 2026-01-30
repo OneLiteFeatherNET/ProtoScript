@@ -1,0 +1,8 @@
+[project]
+name = "protoscript"
+version = "0.1.0"
+description = "A Django REST service that converts speech to structured protocols using Hugging Face speech-to-text models, Jinja2 templates, and metadata-driven rendering."
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.0.1",
+]
